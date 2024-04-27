@@ -1,4 +1,4 @@
-import jenkins.model.Jenkins;
+import jenkins.model.Jenkins
 
 pm = Jenkins.instance.pluginManager
 uc = Jenkins.instance.updateCenter
