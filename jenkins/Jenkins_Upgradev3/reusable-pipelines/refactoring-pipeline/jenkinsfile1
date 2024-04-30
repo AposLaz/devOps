@@ -39,7 +39,6 @@ pipeline {
         }
 
         steps {
-          echo "Version ---- ${VERSION_SUFFIX}"
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
           echo 'Mention your Application Build Code here!!!'
 
@@ -50,6 +49,22 @@ pipeline {
               mvn clean package
             '''
           }
+        }
+      }
+
+      stage('Publish') {
+        when {
+          expression { return params.IS_RELEASE } //if we have a release only then publish artifacts
+        }
+
+        steps {
+          archiveArtifacts('**/*.war')
+        }
+      }
+
+      post {
+        always {
+          cleanWs() //delete all files from workerspace
         }
       }
     }
