@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any // this is the slave node that run jenkins 
 
     environment {
         // Define environment variables here

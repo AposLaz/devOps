@@ -19,6 +19,7 @@ pipeline {
 
       stage('Unit Test') {
         steps {
+          sh 'ls'
           dir('./java-tomcat-sample') {
             sh '''
               echo "Executing Unit Tests..."
