@@ -19,8 +19,7 @@ pipeline {
 
       stage('Unit Test') {
         steps {
-          sh 'ls'
-          dir('./java-tomcat-sample') {
+          dir('./jenkins/Jenkins_Upgradev3/java-tomcat-sample') {
             sh '''
               echo "Executing Unit Tests..."
               mvn test
