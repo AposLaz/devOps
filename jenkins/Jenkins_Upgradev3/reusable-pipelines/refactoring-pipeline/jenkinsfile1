@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-      booleanParam(name: 'RELEASE', defaultValue: false, description: 'Is this a RELEASE Candidate?')
+      booleanParam(name: 'IS_RELEASE', defaultValue: false, description: 'Is this a RELEASE Candidate?')
     }
 
     environment {
@@ -35,7 +35,7 @@ pipeline {
 
       stage('Build') {
         steps {
-          echo "RELEASE: ${RELEASE}"
+          echo "RELEASE: ${IS_RELEASE}"
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
           echo 'Mention your Application Build Code here!!!'
 
