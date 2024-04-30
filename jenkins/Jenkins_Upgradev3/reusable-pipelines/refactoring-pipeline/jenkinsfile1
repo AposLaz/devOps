@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
       VERSION = '0.1.0'
       RELEASE_VERSION = 'R.2'
@@ -33,7 +33,14 @@ pipeline {
         steps {
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
           echo 'Mention your Application Build Code here!!!'
-          sh "mvn -f ${ROOT_PATH}/java-tomcat-sample/pom.xml clean package"
+
+          dir("./${ROOT_PATH}/java-tomcat-sample") {
+            sh '''
+              mvn versions:set -DnewVersion="${VERSION}"-SNAPSHOT
+              mvn versions:update-child-modules
+              mvn clean package
+            '''
+          }
         }
       }
     }
