@@ -61,11 +61,11 @@ pipeline {
           archiveArtifacts('**/*.war')
         }
       }
+    }
 
-      post {
+    post {
         always {
           cleanWs() //delete all files from workerspace
         }
       }
-    }
 }
