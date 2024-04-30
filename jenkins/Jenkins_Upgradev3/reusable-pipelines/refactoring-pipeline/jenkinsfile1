@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+      booleanParam(name: 'IS_RELEASE', defaultValue: false, description: 'Is this a RELEASE Candidate?')
+    }
+
     environment {
       VERSION = '0.1.0'
       RELEASE_VERSION = 'R.2'
@@ -31,6 +35,7 @@ pipeline {
 
       stage('Build') {
         steps {
+          echo "RELEASE: ${IS_RELEASE}"
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
           echo 'Mention your Application Build Code here!!!'
 
