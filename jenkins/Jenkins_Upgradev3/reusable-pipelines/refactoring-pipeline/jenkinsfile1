@@ -6,36 +6,29 @@ pipeline {
     }
 
     environment {
-      VERSION = '0.1.0'
-      RELEASE_VERSION = 'R.2'
+      RELEASE_VERSION = '0.1.0'
+      INT_VERSION = 'R.2'
       ROOT_PATH = 'jenkins/Jenkins_Upgradev3'
     }
 
     stages {
       stage('Audit tools') {
         steps {
-          sh '''
-              git version
-              java -version
-              mvn -version
-          '''
+          auditTools()
         }
       }
 
       stage('Unit Test') {
         steps {
           dir("./${ROOT_PATH}/java-tomcat-sample") {
-            sh '''
-              echo "Executing Unit Tests..."
-              mvn test
-          '''
+            unitTests()
           }
         }
       }
 
       stage('Build') {
         environment {
-          VERSION_SUFFIX = "${sh(script:'if [ "${IS_RELEASE}" = false ] ; then echo -n "${INT_VERSION}"ci:"${BUILD_NUMBER}"; else echo -n "${RELEASE_VERSION}":"${BUILD_NUMBER}"; fi', returnStdout: true)}"
+          VERSION_SUFFIX = getBuildVersion()
         }
 
         steps {
@@ -43,11 +36,7 @@ pipeline {
           echo 'Mention your Application Build Code here!!!'
 
           dir("./${ROOT_PATH}/java-tomcat-sample") {
-            sh '''
-              mvn versions:set -DnewVersion="${VERSION}"-SNAPSHOT
-              mvn versions:update-child-modules
-              mvn clean package
-            '''
+            buildMvn()
           }
         }
       }
@@ -65,7 +54,40 @@ pipeline {
 
     post {
         always {
-          cleanWs() //delete all files from workerspace
+      cleanWs() //delete all files from workerspace
         }
-      }
+    }
+}
+
+//add functions
+
+void auditTools() {
+  sh '''
+      git version
+      java -version
+      mvn -version
+  '''
+}
+
+void unitTests() {
+  sh '''
+      echo "Executing Unit Tests..."
+      mvn test
+  '''
+}
+
+void buildMvn() {
+  sh '''
+      mvn versions:set -DnewVersion="${VERSION}"-SNAPSHOT
+      mvn versions:update-child-modules
+      mvn clean package
+  '''
+}
+
+String getBuildVersion() {
+  if (params.IS_RELEASE) {
+    return env.RELEASE_VERSION + ':' + env.BUILD_NUMBER
+  }
+
+  return env.INT_VERSION + ':ci:' + env.BUILD_NUMBER
 }
