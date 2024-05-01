@@ -32,7 +32,7 @@ pipeline {
         }
 
         steps {
-          echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
+          echo "Building version: ${INT_VERSION} with suffix: ${VERSION_SUFFIX}"
           echo 'Mention your Application Build Code here!!!'
 
           dir("./${ROOT_PATH}/java-tomcat-sample") {
