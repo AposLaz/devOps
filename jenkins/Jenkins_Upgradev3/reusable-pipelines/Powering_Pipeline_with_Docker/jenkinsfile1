@@ -1,14 +1,15 @@
 pipeline {
     agent {
         docker {
-            image 'maven:latest'
-            args '-u root'
+      image 'maven:latest'
+      args '-u root'
         }
     }
-    
+
     environment {
       VERSION = '0.1.0'
       RELEASE_VERSION = 'R.2'
+      ROOT_PATH = 'jenkins/Jenkins_Upgradev3'
     }
 
     stages {
@@ -25,7 +26,7 @@ pipeline {
 
       stage('Unit Test') {
         steps {
-          dir('./java-tomcat-sample') {
+          dir("./${ROOT_PATH}java-tomcat-sample") {
             sh '''
               echo "Executing Unit Tests..."
               mvn test
@@ -38,16 +39,14 @@ pipeline {
         steps {
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
           echo 'Mention your Application Build Code here!!!'
-          sh 'mvn -f java-tomcat-sample/pom.xml clean package'
+          sh "mvn -f ${ROOT_PATH}/java-tomcat-sample/pom.xml clean package"
         }
       }
     }
 }
 
-
-
 /*
-Requirements -- 
+Requirements --
 
 1. Jenkins Docker PlugIns
     - Docker

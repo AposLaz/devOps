@@ -1,0 +1,93 @@
+pipeline {
+    agent any
+
+    parameters {
+      booleanParam(name: 'IS_RELEASE', defaultValue: false, description: 'Is this a RELEASE Candidate?')
+    }
+
+    environment {
+      RELEASE_VERSION = '0.1.0'
+      INT_VERSION = 'R.2'
+      ROOT_PATH = 'jenkins/Jenkins_Upgradev3'
+    }
+
+    stages {
+      stage('Audit tools') {
+        steps {
+          auditTools()
+        }
+      }
+
+      stage('Unit Test') {
+        steps {
+          dir("./${ROOT_PATH}/java-tomcat-sample") {
+            unitTests()
+          }
+        }
+      }
+
+      stage('Build') {
+        environment {
+          VERSION_SUFFIX = getBuildVersion()
+        }
+
+        steps {
+          echo "Building version: ${INT_VERSION} with suffix: ${VERSION_SUFFIX}"
+          echo 'Mention your Application Build Code here!!!'
+
+          dir("./${ROOT_PATH}/java-tomcat-sample") {
+            buildMvn()
+          }
+        }
+      }
+
+      stage('Publish') {
+        when {
+          expression { return params.IS_RELEASE } //if we have a release only then publish artifacts
+        }
+
+        steps {
+          archiveArtifacts('**/*.war')
+        }
+      }
+    }
+
+    post {
+        always {
+      cleanWs() //delete all files from workerspace
+        }
+    }
+}
+
+//add functions
+
+void auditTools() {
+  sh '''
+      git version
+      java -version
+      mvn -version
+  '''
+}
+
+void unitTests() {
+  sh '''
+      echo "Executing Unit Tests..."
+      mvn test
+  '''
+}
+
+void buildMvn() {
+  sh '''
+      mvn versions:set -DnewVersion="${VERSION}"-SNAPSHOT
+      mvn versions:update-child-modules
+      mvn clean package
+  '''
+}
+
+String getBuildVersion() {
+  if (params.IS_RELEASE) {
+    return env.RELEASE_VERSION + ':' + env.BUILD_NUMBER
+  }
+
+  return env.INT_VERSION + ':ci:' + env.BUILD_NUMBER
+}
