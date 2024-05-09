@@ -1,26 +1,21 @@
 pipeline {
     agent any
-    
-    tools {
-        jdk 'jdk8'  // Updated to the correct JDK name
-        maven 'Maven 3.3.9'  // Updated to the correct Maven name
-    }
 
     environment {
-        APP_PATH = 'jenkins/my-jenkins/apps'
+        APP_PATH = 'jenkins/Jenkins_Upgradev3/java-tomcat-sample'
     }
 
     stages {
-        stage('Setup'){
+        stage('Setup') {
             steps {
                 sh '''
                     mvn --version
                 '''
             }
         }
-        stage('Tests'){
+        stage('Tests') {
             steps {
-                dir("./${APP_PATH}/ecertby-server"){
+                dir("./${APP_PATH}") {
                     sh '''
                         mvn test
                     '''
@@ -29,14 +24,14 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("./${APP_PATH}/ecertby-server") {
+                dir("./${APP_PATH}") {
                     sh '''
                         mvn clean install
-                    '''  
+                    '''
                 }
             }
         }
-        stage('Publish'){
+        stage('Publish') {
             steps {
                 archiveArtifacts('**/*.war')
             }
