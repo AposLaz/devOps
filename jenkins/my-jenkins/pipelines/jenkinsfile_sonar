@@ -2,21 +2,18 @@ pipeline {
     agent any
 
     environment {
-        PATH = 'jenkins/Jenkins_Upgradev3'
+        APP_PATH = 'jenkins/Jenkins_Upgradev3'  // Changed from PATH to avoid conflicts
     }
+
     stages {
-        stage('Find correct path'){
-            steps{
-                dir("./${PATH}/java-tomcat-sample"){
-                    sh "ls"
-                }            
+        stage('Find correct path') {
+            steps {
+                dir("./${APP_PATH}/java-tomcat-sample") {
+                    sh "ls"  // Lists contents of the directory for verification
+                }
             }
         }
 
-        // stage('Login Sonar'){
-        //     withSonarQubeEnv('sonar'){
-
-        //     }
-        // }
+        // Additional stages can be added here as needed.
     }
 }
