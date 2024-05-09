@@ -39,6 +39,7 @@ pipeline {
                 }else {
                     echo 'BUILD fail'
                 }
+            }
         }
     }
 }
