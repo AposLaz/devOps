@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Find correct path'){
+            sh 'ls'
+        }
+
+        // stage('Login Sonar'){
+        //     withSonarQubeEnv('sonar'){
+
+        //     }
+        // }
+    }
+}
