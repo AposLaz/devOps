@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-015.xml">
+    <changeSet id="ecertDB_015" author="European Dynamics" labels="ignorable">
+
+        <createTable tableName="ATTRIBUTE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ELEMENT_TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_REQUIRED" type="BOOLEAN" />
+            <column name="SELECTED_FOR_RELEASE" type="BOOLEAN" />
+            <column name="COMPANY_RELATED" type="BOOLEAN" />
+            <column name="DEFAULT_VALUE" type="VARCHAR(255)" />
+            <column name="DATE_FORMAT" type="VARCHAR(255)" />
+            <column name="DECIMAL_SEPARATOR" type="VARCHAR(1)" />
+            <column name="DECIMAL_DIGITS" type="VARCHAR(255)" />
+            <column name="THOUSAND_SEPARATOR" type="VARCHAR(1)" />
+            <column name="FK_CATALOG" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_ATTRIBUTE_CATALOG"  referencedTableName="CATALOG" referencedColumnNames="ID" />
+            </column>
+            <column name="HTML_ELEMENT_NAME" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

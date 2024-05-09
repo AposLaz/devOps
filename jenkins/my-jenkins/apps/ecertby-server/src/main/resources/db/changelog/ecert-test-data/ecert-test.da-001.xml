@@ -1,0 +1,55 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert-test.da-001.xml">
+    <changeSet id="ecert-test.da-001" author="European Dynamics" labels="ignorable">
+        <!-- Default Authority User -->
+        <insert tableName="AAA_USER">
+            <column name="id" value="fcf09d73-a526-47d0-b07c-7898f10297df" />
+            <column name="username" value="authorityuser" />
+            <column name="status" value="1" />
+            <column name="superadmin" value="false" />
+            <column name="external" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_USER_HAS_GROUP">
+            <column name="user_id" value="fcf09d73-a526-47d0-b07c-7898f10297df" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+        </insert>
+        <insert tableName="USER_DETAIL">
+            <column name="id" value="32d32458-bf29-416c-8b62-e99a6245d2f2" />
+            <column name="first_name" value="Authority User" />
+            <column name="last_name" value="User" />
+            <column name="username" value="AuthorityUser" />
+            <column name="email" value="authorityuser@eurodyn.com" />
+            <column name="user_type" value="AUTHORITY_USER" />
+            <column name="active" value="1" />
+            <column name="fk_aaa_user" value="fcf09d73-a526-47d0-b07c-7898f10297df" />
+        </insert>
+
+        <!-- Default Company User -->
+        <insert tableName="AAA_USER">
+            <column name="id" value="03797da6-8a9f-496d-b513-3a4735172d03" />
+            <column name="username" value="companyuser" />
+            <column name="status" value="1" />
+            <column name="superadmin" value="false" />
+            <column name="external" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_USER_HAS_GROUP">
+            <column name="user_id" value="03797da6-8a9f-496d-b513-3a4735172d03" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+        </insert>
+        <insert tableName="USER_DETAIL">
+            <column name="id" value="dce76e34-94af-4d22-ba8e-e73e7c84596e" />
+            <column name="first_name" value="Company User" />
+            <column name="last_name" value="User" />
+            <column name="username" value="CompanyUser" />
+            <column name="email" value="companyuser@eurodyn.com" />
+            <column name="user_type" value="COMPANY_USER" />
+            <column name="active" value="1" />
+            <column name="fk_aaa_user" value="03797da6-8a9f-496d-b513-3a4735172d03" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

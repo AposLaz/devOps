@@ -1,0 +1,55 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-002.xml">
+    <changeSet id="ecertDA_002" author="European Dynamics" labels="ignorable">
+
+
+
+        <!-- OPERATIONS -->
+
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="00f234c2-7372-47d2-8f35-f3b3c17fe939" />
+            <column name="name" value="VIEW_LAST_MODIFIED_BY" />
+            <column name="description" value="Can view information who and when lastly modified and entry" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- GROUPS -->
+
+
+        <!-- SYSTEM ADMINISTRATOR -->
+
+        <!-- VIEW_LAST_MODIFIED_BY -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="ee3e1747-8000-4c31-854a-958666e48f2b" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="00f234c2-7372-47d2-8f35-f3b3c17fe939" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!-- SUPPORT -->
+
+        <!-- VIEW_LAST_MODIFIED_BY -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="ea8b4192-de37-45bf-8647-d76a14731d00" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="00f234c2-7372-47d2-8f35-f3b3c17fe939" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!--        Insert System Admin operations START  -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="70ee744a-a412-4ab4-b56c-179c5701ba4d" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="00f234c2-7372-47d2-8f35-f3b3c17fe939" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

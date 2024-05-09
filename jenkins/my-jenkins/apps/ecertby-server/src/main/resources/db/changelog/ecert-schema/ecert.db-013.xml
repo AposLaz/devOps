@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-013.xml">
+    <changeSet id="ecertDB_013" author="European Dynamics" labels="ignorable">
+
+
+
+
+        <addForeignKeyConstraint baseColumnNames="fk_search_criteria"
+                                 baseTableName="SEARCH_CRITERIA_GROUP"
+                                 constraintName="FK_GROUP_SEARCH_CRITERIA"
+                                 referencedColumnNames="ID"
+                                 referencedTableName="SEARCH_CRITERIA"/>
+
+    </changeSet>
+</databaseChangeLog>

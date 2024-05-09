@@ -1,0 +1,32 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-011.xml">
+    <changeSet id="ecertDB_011" author="European Dynamics" labels="ignorable">
+        <dropColumn tableName="SEARCH_CRITERIA" columnName="REFERENCE_ID"/>
+
+        <dropColumn tableName="SEARCH_CRITERIA" columnName="GROYP_TYPE"/>
+
+        <createTable tableName="SEARCH_CRITERIA_GROUP">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_SEARCH_CRITERIA" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GROUP_TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+
+        <addColumn tableName="USER_DETAIL">
+            <column name="FK_SEARCH_CRITERIA" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USER_DETAIL_SEARCH_CRITERIA" referencedTableName="SEARCH_CRITERIA" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+
+    </changeSet>
+</databaseChangeLog>

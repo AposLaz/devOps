@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: /db/changelog/qlack-fuse-aaa/qlack.fuse.aaa.changelog.xml
+  - include:
+      file: /db/changelog/qlack-fuse-content-manager/qlack.fuse.cm.changelog.xml
+  - include:
+      file: /db/changelog/qlack-fuse-feature-dashboard/qlack.fuse.fd.changelog.xml
+  - includeAll:
+      path: db/changelog/custom-qlack
+  - includeAll:
+      path: /db/changelog/ecert-schema
+  - includeAll:
+      path: /db/changelog/ecert-data

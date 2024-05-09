@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-004.xml">
+    <changeSet id="ecertDA_004" author="European Dynamics" labels="ignorable">
+
+
+
+        <!-- OPERATIONS -->
+
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="b8625fc4-08b3-4e56-804f-74883f39c3c5" />
+            <column name="name" value="AUTHORITY_FORWARD_CERTIFICATE" />
+            <column name="description" value="Can forward from an authority to another authority" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- GROUPS -->
+
+
+        <!-- AUTHORITY MAIN -->
+
+        <!-- AUTHORITY_FORWARD_CERTIFICATE -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="dc0900e6-b2a4-44c7-a357-5210bd9e812d" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="b8625fc4-08b3-4e56-804f-74883f39c3c5" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!-- AUTHORITY CO USER -->
+
+        <!-- AUTHORITY_FORWARD_CERTIFICATE -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="3c4ba356-8894-457d-ab93-15c397fd997f" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="b8625fc4-08b3-4e56-804f-74883f39c3c5" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,224 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-003.xml">
+    <changeSet id="ecertDA_003" author="European Dynamics" labels="ignorable">
+
+
+
+        <!-- OPERATIONS -->
+
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="d4927f13-ec59-4627-a2a5-6c70fac30595" />
+            <column name="name" value="NEW_NOTIFICATION" />
+            <column name="description" value="Can create new notification" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="0b4d0b1f-3765-413b-955d-9fb9b8bcdb31" />
+            <column name="name" value="EDIT_NOTIFICATION" />
+            <column name="description" value="Can edit notification" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="7f9aabb8-fcd3-45e2-ab6b-e17ba1f9d025" />
+            <column name="name" value="VIEW_NOTIFICATION" />
+            <column name="description" value="Can view notification" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="601035a9-a50f-4a19-aaa1-725fcd1d173b" />
+            <column name="name" value="VIEW_NOTIFICATION_LIST" />
+            <column name="description" value="Can view notification list" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="48db92f0-ae8e-40aa-9998-6049afd3c2bc" />
+            <column name="name" value="ACTIVATE_NOTIFICATION" />
+            <column name="description" value="Can activate notification" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="cfbdf1d7-fb1e-4ce9-b6f2-50b2a25bcf81" />
+            <column name="name" value="PUBLISH_NOTIFICATION" />
+            <column name="description" value="Can publish  notification" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="c1ceb518-5341-48fa-beb1-ea0e6de9ce44" />
+            <column name="name" value="DELETE_NOTIFICATION" />
+            <column name="description" value="Can delete notification" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- GROUPS -->
+
+
+        <!-- SYSTEM ADMINISTRATOR -->
+        <!--NEW_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="e0f069b2-d65d-4926-841b-664c8cb97f53" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="d4927f13-ec59-4627-a2a5-6c70fac30595" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--EDIT_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="22917a82-39da-4c80-8f18-4c0eff44f630" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="0b4d0b1f-3765-413b-955d-9fb9b8bcdb31" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--VIEW_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="28457af4-52ab-4a3f-9a5f-a0cc3d338aaa" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="7f9aabb8-fcd3-45e2-ab6b-e17ba1f9d025" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--VIEW_NOTIFICATION_LIST -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="7aad7524-4f85-40f1-8c96-20c6774b6f5a" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="601035a9-a50f-4a19-aaa1-725fcd1d173b" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--ACTIVATE_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="17d8f604-4676-4515-b50b-4f0efd833438" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="48db92f0-ae8e-40aa-9998-6049afd3c2bc" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--PUBLISH_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="f05a8d9c-cf74-4a5a-b508-3bac1dba3a3e" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="cfbdf1d7-fb1e-4ce9-b6f2-50b2a25bcf81" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--DELETE_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="a636e843-85a6-4238-b2eb-a7646421309a" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="c1ceb518-5341-48fa-beb1-ea0e6de9ce44" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- SUPPORT -->
+        <!--NEW_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="e60e4945-f9ec-403f-b355-3d9188555178" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="d4927f13-ec59-4627-a2a5-6c70fac30595" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--EDIT_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="7d40f46a-7921-4d2f-b606-5c70488556a4" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="0b4d0b1f-3765-413b-955d-9fb9b8bcdb31" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--VIEW_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="909f4180-ec11-42e5-8a48-50d2847f3904" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="7f9aabb8-fcd3-45e2-ab6b-e17ba1f9d025" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--VIEW_NOTIFICATION_LIST -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="04983f35-40db-49b0-8997-56d420667ec7" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="601035a9-a50f-4a19-aaa1-725fcd1d173b" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--ACTIVATE_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="b16e05d2-9c19-49c7-9559-3c18c532c80e" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="48db92f0-ae8e-40aa-9998-6049afd3c2bc" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--PUBLISH_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="0fd275e1-921a-4520-abef-c49992cc0e3f" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="cfbdf1d7-fb1e-4ce9-b6f2-50b2a25bcf81" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--DELETE_NOTIFICATION -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="11a7d70b-1154-4ec8-9bdb-3abdfb610b13" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="c1ceb518-5341-48fa-beb1-ea0e6de9ce44" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!--        Insert System Admin operations START  -->
+        <!-- NEW_NOTIFICATION -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="e20f5ad6-7a58-4be0-b9a0-83ba39f85a3b" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="d4927f13-ec59-4627-a2a5-6c70fac30595" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_NOTIFICATION -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="53f0ad21-77dd-4458-a7b7-b1b258069847" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="0b4d0b1f-3765-413b-955d-9fb9b8bcdb31" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_NOTIFICATION -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="519a5adc-3723-4fac-987b-932264365fcc" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="7f9aabb8-fcd3-45e2-ab6b-e17ba1f9d025" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_NOTIFICATION_LIST -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="bf68b21b-057b-42ff-81a6-1d828c1db4cd" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="601035a9-a50f-4a19-aaa1-725fcd1d173b" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--ACTIVATE_NOTIFICATION -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="b586fa52-5b47-4744-9683-366693ebc9d1" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="48db92f0-ae8e-40aa-9998-6049afd3c2bc" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+            <!--PUBLISH_NOTIFICATION -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="d4d4e851-d290-4653-83a6-5c257c3e3f9c" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="cfbdf1d7-fb1e-4ce9-b6f2-50b2a25bcf81" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--DELETE_NOTIFICATION -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="56230665-c694-4c63-b2f3-266b8c93556f" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="c1ceb518-5341-48fa-beb1-ea0e6de9ce44" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

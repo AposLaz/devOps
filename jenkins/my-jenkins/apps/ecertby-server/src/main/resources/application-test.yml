@@ -1,0 +1,36 @@
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-test.yaml
+  db:
+    drop-schema: true
+  datasource:
+    name: qDS
+    url: jdbc:postgresql://localhost:6000/ecertby_db
+    username: ecertby
+    password: passwort
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          ecertby:
+            assertingparty:
+              metadata-uri: "http://localhost:9090/realms/ecertby/protocol/saml/descriptor"
+
+  mail:
+    host: 127.0.0.1
+    port: 1025
+
+
+ecert:
+  keycloak-url: "http://localhost:9090"
+  keycloak-container-url: "http://localhost:9090"
+
+
+
+qlack:
+  fuse:
+    mailing:
+      sendQueuedInterval: 1000
+  util:
+    clamav:
+      port: 3000

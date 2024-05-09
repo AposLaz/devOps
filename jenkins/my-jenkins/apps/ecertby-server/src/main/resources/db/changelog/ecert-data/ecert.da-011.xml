@@ -1,0 +1,135 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-011.xml">
+    <changeSet id="ecertDA_011" author="European Dynamics" labels="ignorable">
+        <!--VIEW_CATALOG_LIST OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="3380d640-d3df-4f82-8b97-876883f93d02" />
+            <column name="name" value="VIEW_CATALOG_LIST" />
+            <column name="description" value="Can view catalog list" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--VIEW_CATALOG OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="d0164241-d5c4-4650-9a5d-066081cd6105" />
+            <column name="name" value="VIEW_CATALOG" />
+            <column name="description" value="Can view catalog" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--NEW_CATALOG OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="5f5cacfc-b2d6-4177-91c2-a4d4535d4274" />
+            <column name="name" value="NEW_CATALOG" />
+            <column name="description" value="Can create catalog" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--EDIT_CATALOG OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="bec34fd4-7825-41e5-b8fa-53f80cc9c429" />
+            <column name="name" value="EDIT_CATALOG" />
+            <column name="description" value="Can edit catalog" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--DELETE_CATALOG OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="dee986ad-bfe6-4b14-ab7f-ca6bf4bd11c5" />
+            <column name="name" value="DELETE_CATALOG" />
+            <column name="description" value="Can delete catalog" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- SYSTEM ADMINISTRATOR -->
+        <!--VIEW_CATALOG_LIST -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="78bcd261-04a6-4b09-8877-851c5748626b" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="3380d640-d3df-4f82-8b97-876883f93d02" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="0ca3ab9e-609c-4a20-9ac2-d2def7b1cc75" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="3380d640-d3df-4f82-8b97-876883f93d02" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--VIEW_CATALOG -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="ea4eba2e-1b3d-4152-a2de-c130373d0c78" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="d0164241-d5c4-4650-9a5d-066081cd6105" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="9ef9685e-5190-4278-8624-1b82e2315d40" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="d0164241-d5c4-4650-9a5d-066081cd6105" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--NEW_CATALOG -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="76c6d242-df36-4f90-b991-efd52b5ec70a" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="5f5cacfc-b2d6-4177-91c2-a4d4535d4274" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="f557c1d3-afb3-4e1d-84f9-2f28159913d0" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="5f5cacfc-b2d6-4177-91c2-a4d4535d4274" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--EDIT_CATALOG -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="c19d90ae-10e5-49e7-bee6-cdca9026a2be" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="bec34fd4-7825-41e5-b8fa-53f80cc9c429" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="fbea9f09-2225-496f-a6ce-1ce9c9353f0e" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="bec34fd4-7825-41e5-b8fa-53f80cc9c429" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--DELETE_CATALOG -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="6bdb5e85-ec09-4c46-bfac-3c473a9e79a6" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="dee986ad-bfe6-4b14-ab7f-ca6bf4bd11c5" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="416e54ab-5ce1-4c52-babd-9161de871d72" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="dee986ad-bfe6-4b14-ab7f-ca6bf4bd11c5" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- SUPPORT -->
+        <!-- VIEW_CATALOG_LIST -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="6adc87bd-ffbd-4683-8ef6-635f5ef04018" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="3380d640-d3df-4f82-8b97-876883f93d02" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_CATALOG -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="11aa6a6a-b6df-4884-8de5-804b8d1dec11" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="d0164241-d5c4-4650-9a5d-066081cd6105" />
+            <column name="dbversion" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

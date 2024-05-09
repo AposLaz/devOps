@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: mailing_002
+      author: European Dynamics SA
+      context: "!qlack-disabled"
+      changes:
+        - modifyDataType:
+            columnName: body
+            newDataType: mediumtext
+            tableName: mai_email

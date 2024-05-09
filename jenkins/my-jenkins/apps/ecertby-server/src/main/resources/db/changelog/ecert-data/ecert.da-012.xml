@@ -1,0 +1,72 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-012.xml">
+    <changeSet id="ecertDA_012" author="European Dynamics" labels="ignorable">
+        <!-- CATALOGUES -->
+        <insert tableName="catalog">
+            <column name="id" value="8e5d36eb-9a63-4341-908e-ce74e1968422" />
+            <column name="name" value="Rolle im Prozess-Betrieb" />
+            <column name="created_on" value="2024-04-29 00:00:00" />
+            <column name="mandatory" value="true" />
+        </insert>
+
+        <insert tableName="catalog">
+            <column name="id" value="b24d8154-705c-4f8f-8022-baf8727d1426" />
+            <column name="name" value="Rolle im Prozess-Behörde" />
+            <column name="created_on" value="2024-04-29 00:00:00" />
+            <column name="mandatory" value="true" />
+        </insert>
+
+        <!-- Catalogue values for Rolle im Prozess-Betrieb -->
+        <insert tableName="catalog_value">
+            <column name="id" value="38a63605-f907-496b-84d8-92d1da19a9d5" />
+            <column name="fk_catalog" value="8e5d36eb-9a63-4341-908e-ce74e1968422" />
+            <column name="data" value="Sachbearbeiter" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="24b3a95e-e6b2-4a83-939c-049ae7fda656" />
+            <column name="fk_catalog" value="8e5d36eb-9a63-4341-908e-ce74e1968422" />
+            <column name="data" value="Lagerist" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="290e0a38-86c2-4dee-af4d-a8be42bd760e" />
+            <column name="fk_catalog" value="8e5d36eb-9a63-4341-908e-ce74e1968422" />
+            <column name="data" value="Mitarbeiter" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="627c6671-df0f-4fc5-b808-e725aa155682" />
+            <column name="fk_catalog" value="8e5d36eb-9a63-4341-908e-ce74e1968422" />
+            <column name="data" value="Sonstige" />
+        </insert>
+
+        <!-- Catalogue values for Rolle im Prozess-Behörde -->
+        <insert tableName="catalog_value">
+            <column name="id" value="724b55bb-a601-4ea3-811d-a75b2e664f3f" />
+            <column name="fk_catalog" value="b24d8154-705c-4f8f-8022-baf8727d1426" />
+            <column name="data" value="Amtstierarzt" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="e20198cf-96e7-4710-8c13-e5a3c8aec3cf" />
+            <column name="fk_catalog" value="b24d8154-705c-4f8f-8022-baf8727d1426" />
+            <column name="data" value="amtlicher Tierarzt" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="d6fafc93-282b-4434-9e4e-fda4f7c43539" />
+            <column name="fk_catalog" value="b24d8154-705c-4f8f-8022-baf8727d1426" />
+            <column name="data" value="Verwaltungshelfer" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="84f352eb-0f57-47ba-84b8-ea77aaa989a7" />
+            <column name="fk_catalog" value="b24d8154-705c-4f8f-8022-baf8727d1426" />
+            <column name="data" value="Sachbearbeiter" />
+        </insert>
+        <insert tableName="catalog_value">
+            <column name="id" value="9635a0cc-37e7-4367-93c3-1d7ed3d5310a" />
+            <column name="fk_catalog" value="b24d8154-705c-4f8f-8022-baf8727d1426" />
+            <column name="data" value="Sonstige" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,499 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-001.xml">
+    <changeSet id="ecertDB_001" author="European Dynamics" labels="ignorable">
+
+        <createTable tableName="AUTHORITY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false" uniqueConstraintName="UNQ_AUTHORITY_NAME"/>
+            </column>
+            <column name="COMMUNITY_CODE" type="VARCHAR(255)"/>
+            <column name="ADDRESS" type="VARCHAR(2000)"/>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="COMPANY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false" uniqueConstraintName="UNQ_COMPANY_NAME"/>
+            </column>
+            <column name="ADDRESS" type="VARCHAR(2000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR(255)"/>
+            <column name="TELEPHONE" type="VARCHAR(255)"/>
+            <column name="FK_POST_RESP_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANY_POSTAUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_PRE_RESP_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANY_PREAUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_RESPONSIBLE_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANY_RESPOAUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DELETED" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REGISTRATION_DATE" type="DATETIME"/>
+            <column name="DEREGISTRATION_DATE" type="DATETIME"/>
+        </createTable>
+
+        <createTable tableName="USER_DETAIL">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="SALUTATION" type="VARCHAR(255)"/>
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="USERNAME" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UNIQUE_USERNAME_USER_DETAIL"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UNIQUE_EMAIL_USER_DETAIL"/>
+            </column>
+            <column name="TELEPHONE" type="VARCHAR(255)"/>
+            <column name="MOBILE_NUMBER" type="VARCHAR(255)"/>
+            <column name="ADDITIONAL_CONTACT_INFO" type="VARCHAR(2000)"/>
+            <column name="USER_TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_AAA_USER" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERDETAIL_AAA_USER"  referencedTableName="AAA_USER" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_COMPANY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERDETAIL_COMPANY"  referencedTableName="COMPANY" referencedColumnNames="ID" nullable="true"/>
+            </column>
+            <column name="FK_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERDETAIL_AUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="true"/>
+            </column>
+            <column name="REFRESH_TOKEN" type="VARCHAR(1000)"/>
+            <column name="REFRESH_COUNTER" type="NUMERIC(1,0)" defaultValue="0"/>
+        </createTable>
+
+        <createTable tableName="AUDIT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_AUDIT_USER_DETAIL"  referencedTableName="USER_DETAIL" referencedColumnNames="ID"/>
+            </column>
+            <column name="ACTION" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DETAIL" type="VARCHAR(4000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+        </createTable>
+
+        <createTable tableName="CATALOG">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CATALOG_ENUM" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="CATALOG_VALUE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CATALOG" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CATALOGVALUE_CATALOG"  referencedTableName="CATALOG" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="DATA" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="TARGET_COUNTRY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ISO_CODE" type="VARCHAR(2))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="TEMPLATE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="TEMPLATE_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_TARGET_COUNTRY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEMPLATE_TARGET_COUNTRY"  referencedTableName="TARGET_COUNTRY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_PRODUCT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEMPLATE_PRODUCT"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="VALID_FROM" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID_TO" type="DATETIME"/>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RELEASE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COMMENT" type="VARCHAR(2000)"/>
+        </createTable>
+
+        <createTable tableName="TEMPLATE_DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_TEMPLATE_DEPARTMENT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEMPLATE_DEPARTMENT_TEMPL"  referencedTableName="TEMPLATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CATALOG_VALUE_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="TEMPLATE_KEYWORD">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_TEMPLATE_KEYWORD" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEMPLATE_KEYWORD_TEMPL"  referencedTableName="TEMPLATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CATALOG_VALUE_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="CERTIFICATE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="STATUS" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_TEMPLATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_TEMPLATE"  referencedTableName="TEMPLATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="SHIPPING_DATE" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COMPANY_NUMBER" type="VARCHAR(255)"/>
+            <column name="FK_ISSUING_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_ISSUING_AUTHORITY" referencedTableName="AUTHORITY" referencedColumnNames="ID"/>
+            </column>
+            <column name="FK_RESPONSIBLE_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_RESPONSIBLE_AUTHORITY" referencedTableName="AUTHORITY" referencedColumnNames="ID"/>
+            </column>
+            <column name="FK_SIGNING_EMPLOYEE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_SIGNING_EMPLOYEE" referencedTableName="USER_DETAIL" referencedColumnNames="ID"/>
+            </column>
+            <column name="FK_FORWARD_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_FORWARD_AUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID"/>
+            </column>
+            <column name="FK_PARENT_CERTIFICATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_CERTIFICATE"  referencedTableName="CERTIFICATE" referencedColumnNames="ID"/>
+            </column>
+            <column name="SECURITY_PAPER" type="BOOLEAN"/>
+            <column name="PAPER_NUMBERS" type="VARCHAR(2000)"/>
+            <column name="PRINTED_DATE" type="DATETIME"/>
+            <column name="TRANSFERRED_DATE" type="DATETIME"/>
+            <column name="ANNULMENT_DATE" type="DATETIME"/>
+            <column name="FK_COMPANY" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_ASSIGNED_EMPLOYEE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_ASSIGNED_EMPLOYEE" referencedTableName="USER_DETAIL" referencedColumnNames="ID"/>
+            </column>
+            <column name="COMPLETED_FORWARD" type="BOOLEAN"/>
+            <column name="CREATION_DATE" type="DATETIME"/>
+            <column name="FORWARD_DATE" type="DATETIME"/>
+            <column name="CLOSING_DATE" type="DATETIME"/>
+            <column name="REASON" type="VARCHAR(2000)"/>
+            <column name="FK_PRE_CERTIFICATE_ACTION_BY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_PRE_CERTIFICATE_ACTION_BY"  referencedTableName="USER_DETAIL" referencedColumnNames="ID"/>
+            </column>
+            <column name="PRE_CERTIFICATE_ACTION_ON" type="DATETIME"/>
+        </createTable>
+
+        <createTable tableName="COMPANY_PROFILE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="PROFILE_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ADDRESS" type="VARCHAR(2000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_COMPANY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COPMPANYPROFILE_COMPANY"  referencedTableName="COMPANY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="COMPANY_PROFILE_COUNTRY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_COMPANY_PROFILE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANYPROFILECOUNTRY_COMPANYPROFILE"  referencedTableName="COMPANY_PROFILE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_TARGET_COUNTRY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANYPROFILECOUNTRY_TARGETCOUNTRY"  referencedTableName="TARGET_COUNTRY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="COMPANY_PROFILE_PRODUCT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_COMPANY_PROFILE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANYPROFILEPRODUCT_COMPANYPROFILE"  referencedTableName="COMPANY_PROFILE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANYPROFILEPRODUCT_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="TASK">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(2000)" />
+            <column name="CREATED_ON" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_AUTHORITY" type="VARCHAR(36)" />
+            <column name="FK_COMPANY" type="VARCHAR(36)" />
+            <column name="FK_CERTIFICATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TASK_CERTIFICATE"  referencedTableName="CERTIFICATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="INFO" type="VARCHAR(2500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REASON" type="VARCHAR(2000)"/>
+            <column name="COMPLETED" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTION" type="VARCHAR(100)" />
+            <column name="CERTIFICATE_COMPANY_NUMBER" type="VARCHAR(255)" />
+            <column name="CERTIFICATE_STATUS" type="VARCHAR(255)" />
+        </createTable>
+
+        <createTable tableName="COMPANY_DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_COMPANY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANYDEPARTMENT_COMPANY"  referencedTableName="COMPANY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_COMPANYDEPARTMENT_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="AUTHORITY_DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_AUTHORITY" type="VARCHAR(36)" >
+                <constraints foreignKeyName="FK_AUTHORITYDEPARTMENT_AUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_AUTHORITYDEPARTMENT_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="TEAM">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_AUTHORITY" type="VARCHAR(36)"/>
+            <column name="FK_COMPANY" type="VARCHAR(36)"/>
+        </createTable>
+
+        <createTable tableName="TEAM_DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_TEAM" type="VARCHAR(36)" >
+                <constraints foreignKeyName="FK_TEAMDEPARTMENT_TEAM"  referencedTableName="TEAM" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEAMDEPARTMENT_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="USER_DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERDEPARTMENT_USERDETAIL"  referencedTableName="USER_DETAIL" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERDEPARTMENT_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="USER_COMPANY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERCOMPANY_USER"  referencedTableName="USER_DETAIL" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_COMPANY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERCOMPANY_COMPANY"  referencedTableName="COMPANY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_USER_GROUP" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_AAA_USER_GROUP_ID" referencedTableName="AAA_USER_GROUP" referencedColumnNames="ID" nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="USER_AUTHORITY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERAUTHORITY_USER"  referencedTableName="USER_DETAIL" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERAUTHORITY_AUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_USER_GROUP" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_AAA_USER_GROUP_ID" referencedTableName="AAA_USER_GROUP" referencedColumnNames="ID" nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="USER_TEAM">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERTEAM_USER_DETAIL"  referencedTableName="USER_DETAIL" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_TEAM" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USERTEAM_TEAM"  referencedTableName="TEAM" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="OBJECT_LOCK">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_OBJECTLOCK_USER_DETAIL"  referencedTableName="USER_DETAIL" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="OBJECT_ID" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OBJECT_TYPE" type="VARCHAR(50)"/>
+            <column name="CREATED_ON" type="TIMESTAMP"/>
+        </createTable>
+
+        <createTable tableName="CERTIFICATE_PRE_AUTHORITY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CERTIFICATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE"  referencedTableName="CERTIFICATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_PRE_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_PRE_AUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="CERTIFICATE_DEPARTMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CERTIFICATE_DEPARTMENT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_DEPARTMENT"  referencedTableName="CERTIFICATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CATALOG_VALUE_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="CERTIFICATE_KEYWORD">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CERTIFICATE_KEYWORD" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_KEYWORD"  referencedTableName="CERTIFICATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_CATALOG_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CATALOG_VALUE_CATALOGVALUE"  referencedTableName="CATALOG_VALUE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="CERTIFICATE_TEAM">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CERTIFICATE_TEAM" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_TEAM"  referencedTableName="CERTIFICATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_TEAM" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEAM"  referencedTableName="TEAM" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+        <addColumn tableName="fd_thread_message" >
+            <column name="fk_authority" type="VARCHAR(255)">
+                <constraints foreignKeyName="fk_selection_authority" referencedTableName="authority" referencedColumnNames="id"/>
+            </column>
+            <column name="fk_company" type="VARCHAR(255)">
+                <constraints foreignKeyName="fk_selection_company" referencedTableName="company" referencedColumnNames="id"/>
+            </column>
+            <column name="dtype" type="VARCHAR(255)"/>
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="EMAIL" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-005.xml">
+    <changeSet id="ecertDB_005" author="European Dynamics" labels="ignorable">
+        <createTable tableName="CERTIFICATE_ASSIGNMENT_HISTORY">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_ASSIGNED_EMPLOYEE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_ASSIGNED_EMPLOYEE"  referencedTableName="USER_DETAIL" referencedColumnNames="ID"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="CERTIFICATE_ASSIGNMENT_HISTORY_TEAM">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CERTIFICATE_ASSIGNMENT_HISTORY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_ASSIGNMENT_HISTORY"  referencedTableName="CERTIFICATE_ASSIGNMENT_HISTORY" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_TEAM" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_ASSIGNMENT_HISTORY_TEAM"  referencedTableName="TEAM" referencedColumnNames="ID" nullable="false" deleteCascade="true"/>
+            </column>
+        </createTable>
+
+        <addColumn tableName="CERTIFICATE">
+            <column name="FK_ASSIGNMENT_HISTORY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_ASSIGNMENT_HISTORY" referencedTableName="CERTIFICATE_ASSIGNMENT_HISTORY" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+
+    </changeSet>
+</databaseChangeLog>

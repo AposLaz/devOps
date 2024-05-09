@@ -1,0 +1,160 @@
+# spring properties
+spring:
+  datasource:
+    name: qDS
+    # For day to day development, uncomment the following 3 lines and comment out the "original" 3
+    url: jdbc:postgresql://localhost:5432/ecertby_db
+    username: ecertby
+    password: passwort
+    #    url: jdbc:h2:mem:testdb;NON_KEYWORDS=value;DATABASE_TO_LOWER=true;DB_CLOSE_ON_EXIT=FALSE
+    #    username: sa
+    #    password: password
+    #initialization-mode: always
+    hikari:
+      connection-test-query: SELECT 1
+      # The property connectionTimeout indicates the maximum number of milliseconds that the service can wait to obtain a connection, defaulting to 30 seconds.
+      connection-timeout: 60000
+      maximum-pool-size: 30
+      # The idleTimeout configuration is the maximum time we will allow a connection to be inactive in the connection pool.
+      idle-timeout: 120000
+      # The minimumIdle property in Hikari represents the minimum number of inactive connections that the connection pool can maintain. The default number is 10.
+      minimum-idle: 10
+      # The maxLifetime property of Hikari specifies the time, in milliseconds, that a connection can remain in use after being closed. Be careful not to set a very high time.
+      max-lifetime: 300000
+  jpa:
+    hibernate:
+
+    # ddl-auto: validate  Validate Hibernate/DB Schema
+    generate-ddl: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 150MB
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          ecertby:
+            entity-id: ecertbyDevClient
+            #            acs:
+            #              location: "http://localhost:7070/realms/ecertby/protocol/saml"
+            signing:
+              credentials:
+                - private-key-location: "classpath:/sso/pkcs8.key"
+                  certificate-location: "classpath:/sso/certificate.crt"
+            assertingparty:
+              metadata-uri: "http://localhost:7070/realms/ecertby/protocol/saml/descriptor"
+
+  mail:
+    host: 127.0.0.1
+    port: 1125
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+      email_sender: no-reply@eurodyn.com
+    max_tries: 3
+    debug: false
+    polling: true
+
+#  Real SMPT config, e.g. Delos
+#  mail:
+#    host: delos.eurodyn.com
+#    port: 25
+#    username: ecertby@delos.eurodyn.com
+#    password: ******
+#    protocol: smtp
+#    tls: true
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: false
+#      max_tries: 3
+#      debug: false
+#      polling: true
+#      email_sender: no-reply@eurodyn.com
+
+server:
+  servlet:
+    context-path: /api
+  error:
+    include-stacktrace: never
+  port: 8081
+
+logging:
+  level:
+    root: error
+    com.eurodyn.qlack: debug
+    lgl.bayern.de.ecertby: debug
+    com.eurodyn.qlack.fuse.aaa.aop.ResourceAccessInterceptor: warn
+    org:
+      hibernate:
+        SQL: debug
+        orm:
+          jdbc:
+            bind: trace
+  file:
+    name: logs/ecertby.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: logs/ecertby-%d{yyyy-MM-dd}-%i.log
+      max-file-size: 10MB
+
+ecert:
+  saml-success-redirect: "http://localhost:4200/home"
+  saml-logout-endpoint: "http://localhost:8081/api/logout/saml2/slo"
+  keycloak-url: "http://localhost:7070"
+  keycloak-container-url: "http://localhost:7070"
+  keycloak-ecertby-realm: "ecertby"
+  keycloak-admin-username: "admin"
+  keycloak-admin-password: "admin"
+  keycloak-master-realm: "master"
+  keycloak-client-id: "admin-cli"
+  keycloak-client-id-for-verification: "account"
+  domain-url: "http://localhost:4200"
+  # Enable disable AOP logging of method arguments
+  debug-methods: true
+  jwt:
+    subject: "ecertby_jwt"
+    issuer: "ecertby"
+    secret: "1234"
+    ttl: "120" #in minutes - must not be less than 5 minutes
+    refresh-token-ttl: "150" #in minutes - must not be less than 5 minutes - should be greater than ttl
+    refresh-times: "6"
+
+scheduler:
+  # Job to clean all object locks from db
+  clear-object-locks-cron: "0 0 3 * * ?"
+  # Job to delete certificates found in the recycle bin
+  clear-recycle-bin-cron: "0 0 3 * * ?"
+  # Duration of days certificates will be maintained in the recycle bin. Default: 30
+  recycle-bin-days-to-maintain: 30
+
+qlack:
+  fuse:
+    cm:
+      # Set filesystem as CM storage
+      storageStrategy: "FS_STORAGE"
+      rootFS: "/var/docs"
+      # Clean up deleted filesystem data auter 't' milliseconds. Default 60000
+      cleanupInterval: 60000
+    mailing:
+      sendQueuedInterval: 300000
+  util:
+    clamav:
+      # Host under which the ClamAV service is running.
+      host: "localhost"
+
+management:
+  health:
+    mail:
+      enabled: false

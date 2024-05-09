@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-021.xml">
+    <changeSet id="ecertDB_021" author="European Dynamics" labels="ignorable">
+
+        <addColumn tableName="AUDIT">
+            <column name="FK_USER_COMPANY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_AUDIT_USER_COMPANY"  referencedTableName="COMPANY" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="AUDIT">
+            <column name="FK_USER_AUTHORITY" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_AUDIT_USER_AUTHORITY"  referencedTableName="AUTHORITY" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+
+    </changeSet>
+</databaseChangeLog>

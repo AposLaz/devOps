@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-002.xml">
+    <changeSet id="ecertDB_002" author="European Dynamics" labels="ignorable">
+
+        <createTable tableName="CERTIFICATE_AUDIT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_CERTIFICATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_AUDIT_CERTIFICATE"  referencedTableName="CERTIFICATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_AUDIT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_CERTIFICATE_AUDIT_AUDIT"  referencedTableName="AUDIT" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+
+    </changeSet>
+</databaseChangeLog>

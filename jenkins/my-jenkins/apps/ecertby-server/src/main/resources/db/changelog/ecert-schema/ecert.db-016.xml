@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-016.xml">
+    <changeSet id="ecertDB_016" author="European Dynamics" labels="ignorable">
+
+        <createTable tableName="TEMPLATE_ELEMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ELEMENT_TYPE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_TEMPLATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEMPLATE_ELEMENT_TEMPLATE"  referencedTableName="TEMPLATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="TEMPLATE_ELEMENT_VALUE">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="VALUE" type="VARCHAR(2000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_TEMPLATE_ELEMENT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_TEMPLATE_ELEMENT_VALUE_TEMP_ELEM"  referencedTableName="TEMPLATE_ELEMENT" referencedColumnNames="ID" nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

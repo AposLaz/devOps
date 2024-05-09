@@ -1,0 +1,71 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-017.xml">
+    <changeSet id="ecertDB_017" author="European Dynamics" labels="ignorable">
+
+        <addColumn tableName="TEMPLATE" >
+            <column name="VERSION" type="INT"/>
+            <column name="PARENT_TEMPLATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_PARENT_TEMPLATE" referencedTableName="TEMPLATE" referencedColumnNames="id"/>
+            </column>
+        </addColumn>
+
+        <createTable tableName="HTML_ELEMENT">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_ATTRIBUTE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_HTML_ELEMENT_ATTRIBUTE"  referencedTableName="ATTRIBUTE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="FK_TEMPLATE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_HTML_ELEMENT_TEMPLATE"  referencedTableName="TEMPLATE" referencedColumnNames="ID" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOOLTIP" type="VARCHAR(500)"/>
+            <column name="ELEMENT_TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FK_TEMPLATE_ELEMENT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_HTML_ELEMENT_TEMP_ELEM"  referencedTableName="TEMPLATE_ELEMENT" referencedColumnNames="ID"/>
+            </column>
+            <column name="MAX_CHARS" type="INT"/>
+            <column name="IS_REQUIRED" type="BOOLEAN" />
+            <column name="SELECTED_FOR_RELEASE" type="BOOLEAN" />
+            <column name="COMPANY_RELATED" type="BOOLEAN" />
+            <column name="DEFAULT_VALUE" type="VARCHAR(4000)" />
+            <column name="DATE_FORMAT" type="VARCHAR(255)" />
+            <column name="DECIMAL_SEPARATOR" type="VARCHAR(1)" />
+            <column name="DECIMAL_DIGITS" type="VARCHAR(255)" />
+            <column name="THOUSAND_SEPARATOR" type="VARCHAR(1)" />
+            <column name="FK_CATALOG" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_ATTRIBUTE_CATALOG"  referencedTableName="CATALOG" referencedColumnNames="ID" />
+            </column>
+            <column name="IS_BOLD" type="BOOLEAN" />
+            <column name="IS_ITALICS" type="BOOLEAN" />
+            <column name="FONT_SIZE" type="TINYINT" />
+            <column name="SORT_ORDER" type="INT"/>
+        </createTable>
+
+        <createTable tableName="HTML_ELEMENT_RADIO_BUTTON">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SORT_ORDER" type="INT"/>
+            <column name="FK_HTML_ELEMENT" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_HTML_ELEM_RADIO_HTML_ELEM"  referencedTableName="HTML_ELEMENT" referencedColumnNames="ID" />
+            </column>
+            <column name="FK_TEMPLATE_ELEMENT_VALUE" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_HTML_ELEM_RADIO_TEMPLATE_VALUE"  referencedTableName="TEMPLATE_ELEMENT_VALUE" referencedColumnNames="ID" />
+            </column>
+            <column name="FK_ATTRIBUTE_RADIO_BUTTON" type="VARCHAR(36)"/>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>

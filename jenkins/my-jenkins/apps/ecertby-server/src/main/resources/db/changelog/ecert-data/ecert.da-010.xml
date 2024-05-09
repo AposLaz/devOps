@@ -1,0 +1,175 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-010.xml">
+    <changeSet id="ecertDA_010" author="European Dynamics" labels="ignorable">
+        <!-- VIEW_SEARCH_CRITERIA_LIST OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="f6c29859-2167-4e3d-a298-3cd2d2ded016" />
+            <column name="name" value="VIEW_ATTRIBUTE_LIST" />
+            <column name="description" value="Can view attribute list" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- VIEW_ATTRIBUTE OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="4ff0a6ea-34de-4d3e-a40f-399043aff136" />
+            <column name="name" value="VIEW_ATTRIBUTE" />
+            <column name="description" value="Can view attribute" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!--NEW_ATTRIBUTE OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="7d8f19fe-b2b3-414a-87f2-aa938f1bef3a" />
+            <column name="name" value="NEW_ATTRIBUTE" />
+            <column name="description" value="Can create new  attribute" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!--EDIT_ATTRIBUTE OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="db0d354e-759d-4100-b0fb-4aa9756f251a" />
+            <column name="name" value="EDIT_ATTRIBUTE" />
+            <column name="description" value="Can edit attribute" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!--DELETE_ATTRIBUTE OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="1f4d0098-0660-473c-9694-df86979c86e9" />
+            <column name="name" value="DELETE_ATTRIBUTE" />
+            <column name="description" value="Can delete attribute" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!-- SYSTEM ADMINISTRATOR -->
+
+        <!-- VIEW_ATTRIBUTE_LIST -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="049fe024-9f71-4089-8400-8cc36961fc96" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="f6c29859-2167-4e3d-a298-3cd2d2ded016" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- VIEW_ATTRIBUTE -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="67adeb3a-e0d6-46df-8909-d3bea2430a1a" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="4ff0a6ea-34de-4d3e-a40f-399043aff136" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- NEW_ATTRIBUTE -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="4fc920a4-1365-437e-b425-684dd90a6fe6" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="7d8f19fe-b2b3-414a-87f2-aa938f1bef3a" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_ATTRIBUTE -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="33954ee5-bc08-4f22-8dc1-98f756adf2ca" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="db0d354e-759d-4100-b0fb-4aa9756f251a" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_ATTRIBUTE -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="7b857c5d-0b46-4462-ab7d-cccd40b41ca8" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="1f4d0098-0660-473c-9694-df86979c86e9" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!-- SUPPORT -->
+        <!-- VIEW_ATTRIBUTE_LIST-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="d3d3c014-2327-4822-b231-240c56c2bed3" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="f6c29859-2167-4e3d-a298-3cd2d2ded016" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_ATTRIBUTE-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="07f7182c-ea46-451d-b0ef-2a1b2c505dda" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="4ff0a6ea-34de-4d3e-a40f-399043aff136" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_ATTRIBUTE-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="bb10d92b-7e61-4e45-922a-88a715ab8820" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="7d8f19fe-b2b3-414a-87f2-aa938f1bef3a" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_ATTRIBUTE-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="56008121-50b6-41bc-afeb-9db82b6a6f3a" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="db0d354e-759d-4100-b0fb-4aa9756f251a" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_ATTRIBUTE-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="4ad7d39a-f4d9-4f41-ab9a-3d7b2e61f1d9" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="1f4d0098-0660-473c-9694-df86979c86e9" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+
+        <!--        Insert System Admin operations START  -->
+        <!-- VIEW_ATTRIBUTE_LIST-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="22366ece-b2e6-4f0c-84c7-dc894c20c610" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="f6c29859-2167-4e3d-a298-3cd2d2ded016" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_ATTRIBUTE-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="f29dd226-82d9-45c8-81cb-9a8448ae51d7" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="4ff0a6ea-34de-4d3e-a40f-399043aff136" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_ATTRIBUTE-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="68cac6dc-7994-439f-855b-688254aa54d1" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="7d8f19fe-b2b3-414a-87f2-aa938f1bef3a" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_ATTRIBUTE-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="fae1631a-428c-405e-8f78-a9d2059bb274" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="db0d354e-759d-4100-b0fb-4aa9756f251a" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_ATTRIBUTE-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="84459479-b1df-48c0-8988-51546621b07d" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="1f4d0098-0660-473c-9694-df86979c86e9" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

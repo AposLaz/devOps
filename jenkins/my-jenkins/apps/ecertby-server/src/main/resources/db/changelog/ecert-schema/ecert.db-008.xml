@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-008.xml">
+    <changeSet id="ecertDB_008" author="European Dynamics" labels="ignorable">
+        <createTable tableName="EMAIL_NOTIFICATION">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="FK_USER_DETAIL" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_EMAILNOTIFICATION_USERDETAIL" referencedTableName="USER_DETAIL" referencedColumnNames="ID"/>
+            </column>
+            <column name="NOTIFICATION_TYPE" type="VARCHAR(255)" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

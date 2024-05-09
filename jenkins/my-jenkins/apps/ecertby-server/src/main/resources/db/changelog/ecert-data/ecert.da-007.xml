@@ -1,0 +1,355 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-007.xml">
+    <changeSet id="ecertDA_007" author="European Dynamics" labels="ignorable">
+        <!-- VIEW_SEARCH_CRITERIA_LIST OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="bb0b5146-9593-4535-8df6-c413f0917992" />
+            <column name="name" value="VIEW_SEARCH_CRITERIA_LIST" />
+            <column name="description" value="Can view search criteria list" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_SEARCH_CRITERIA OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="name" value="VIEW_SEARCH_CRITERIA" />
+            <column name="description" value="Can view search criteria" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!--NEW_SEARCH_CRITERIA OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="name" value="NEW_SEARCH_CRITERIA" />
+            <column name="description" value="Can create new  search criteria" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!--EDIT_SEARCH_CRITERIA OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="name" value="EDIT_SEARCH_CRITERIA" />
+            <column name="description" value="Can edit search criteria" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!--DELETE_SEARCH_CRITERIA OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="name" value="DELETE_SEARCH_CRITERIA" />
+            <column name="description" value="Can delete search criteria" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+
+        <!-- SYSTEM ADMINISTRATOR -->
+
+        <!-- VIEW_SEARCH_CRITERIA_LIST -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="57189917-c3de-4585-b967-37234498ce5b" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="bb0b5146-9593-4535-8df6-c413f0917992" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- VIEW_SEARCH_CRITERIA -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="5d0ced41-193d-49ce-ab38-aab78b642914" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- NEW_SEARCH_CRITERIA -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="7881d361-4907-47a4-948e-ac5c1d65738e" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="a079d34d-9b03-4293-92e5-ff1da6271c97" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="49bf2bad-9fc1-43a3-8e24-8e84ad2bbe5d" />
+            <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+
+        <!-- SUPPORT -->
+        <!-- VIEW_SEARCH_CRITERIA_LIST-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="21a4be12-b917-49d9-afe2-653324214bfd" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="bb0b5146-9593-4535-8df6-c413f0917992" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="b6c5b89c-82d2-4fbb-b190-44de62a83a93" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="84d044ee-e957-4b97-af50-424cfa1c0c66" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="3b9aac75-5db7-44eb-ab60-712a3f248043" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="683c323f-05e1-46ea-933e-f40bc1d1a93e" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- AUTHORITY ADMIN USER -->
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="261796ae-9585-44b5-b060-d356f235b5a7" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="e89898f6-e0a5-4a74-9380-395658d2092a" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="2fbd30a8-edc2-4980-8f97-2b39e1192914" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="a314387a-b6c2-43bc-8f42-3221cbea6884" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!-- AUTHORITY CO USER -->
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="e3f434fb-abc2-4210-b594-2837bd8c0597" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="a2962e34-0fe5-488a-a746-942eabbcfc20" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="6c2944bf-f483-4912-91c7-80031f9f5731" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="2c80779a-3a42-41f8-bdb8-966811346092" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- AUTHORITY STANDARD USER -->
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="527c60cd-ebae-4a32-ae9a-3d2f2dd9a24e" />
+            <column name="user_group_id" value="dbfc4a65-d38f-4c66-9702-206e10fc2606" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="0d30d8c7-2fb8-4464-a18b-c76637d42f25" />
+            <column name="user_group_id" value="dbfc4a65-d38f-4c66-9702-206e10fc2606" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="e44b8fc7-8f87-4097-81e3-2ff6172b9c33" />
+            <column name="user_group_id" value="dbfc4a65-d38f-4c66-9702-206e10fc2606" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="3092ca7a-285a-47f0-828f-46cffd70bde3" />
+            <column name="user_group_id" value="dbfc4a65-d38f-4c66-9702-206e10fc2606" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- COMPANY ADMIN USER -->
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="007e9ae6-ab07-420b-b4be-28b274e3f83d" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="e73b3a9a-39d8-463f-90be-fe628c98d7ec" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="0102e4fd-296f-4334-b84c-c34a4529936a" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!-- COMPANY CO USER -->
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="dc70d11f-1c1f-42bd-a284-71951222637f" />
+            <column name="user_group_id" value="290d92ba-127d-41b1-bc65-cce2398931c5" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="da677f0d-4d8b-4ef1-911b-5635a07be839" />
+            <column name="user_group_id" value="290d92ba-127d-41b1-bc65-cce2398931c5" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="609ea171-fb1e-4b97-a0d4-13b3833f8193" />
+            <column name="user_group_id" value="290d92ba-127d-41b1-bc65-cce2398931c5" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="3a86617e-0ca2-4808-badc-ff066808e0a9" />
+            <column name="user_group_id" value="290d92ba-127d-41b1-bc65-cce2398931c5" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- COMPANY STANDARD USER -->
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="35e03e4c-60e8-40db-865b-41a49348dd8c" />
+            <column name="user_group_id" value="82fe2c2e-ca9f-47f5-acaa-701c2854b500" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="3f1253b5-23c4-47b8-b9f6-d1431e9eafa7" />
+            <column name="user_group_id" value="82fe2c2e-ca9f-47f5-acaa-701c2854b500" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="0341224e-ee4c-4a64-873c-793813f0f826" />
+            <column name="user_group_id" value="82fe2c2e-ca9f-47f5-acaa-701c2854b500" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="39f3239b-36ad-4106-ad55-84e31e92fd14" />
+            <column name="user_group_id" value="82fe2c2e-ca9f-47f5-acaa-701c2854b500" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+
+        <!--        Insert System Admin operations START  -->
+        <!-- VIEW_SEARCH_CRITERIA_LIST-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="76856b00-3914-42ea-a173-9a90b5530e5c" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="bb0b5146-9593-4535-8df6-c413f0917992" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- VIEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="0544ff81-ae57-415f-9655-c24d7223e206" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="36d7a9f6-5753-4cad-a2ee-d571c40aeeab" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- NEW_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="e19c630a-52d5-4234-aa21-b121f2f90798" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="9ece4211-9048-45a2-9549-7cfcedb76d38" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- EDIT_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="8e22ee25-3904-4231-8fd1-98cdf2a2b60d" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="33288487-4146-46d9-8840-470610e3823e" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- DELETE_SEARCH_CRITERIA-->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="e67a0d36-0be6-4c48-9ccf-85293949131e" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="9e915c5c-8617-4c75-94e1-90be46f0a623" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

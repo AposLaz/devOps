@@ -1,0 +1,88 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-009.xml">
+    <changeSet id="ecertDA_009" author="European Dynamics" labels="ignorable">
+        <!--VIEW_EMAIL_NOTIFICATIONS OPERATION -->
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="name" value="VIEW_EMAIL_NOTIFICATION" />
+            <column name="description" value="Can view email notifications" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- SYSTEM ADMINISTRATOR -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS -->
+        <insert tableName="aaa_user_has_operation">
+            <column name="id" value="8f5889c1-8d14-4009-ba58-ea38df575fc4" />
+            <column name="user_id" value="bdc15070-d89f-497a-b64b-f9a6e71cf7e2" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="resource_id" value="aaaddd00-fb08-4fec-ae6e-8fcc85b258cf" />
+            <column name="deny" value="false" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <insert tableName="aaa_user_group_has_operation">
+        <column name="id" value="d4a39e37-b2e0-4b85-bad3-e21d94d21744" />
+        <column name="user_group_id" value="4989ee35-4f41-4c4b-8720-2a8d3acb54e4" />
+        <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+        <column name="dbversion" value="0" />
+        </insert>
+        <!-- SUPPORT -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="24e3f99b-ce78-4060-ae5a-d080f27b7913" />
+            <column name="user_group_id" value="bf1bce1f-9ed4-4ff3-b061-8561c9a180cd" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- AUTHORITY ADMIN USER -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="a54848af-1d60-480f-9ef8-aa0f7c590b5e" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- AUTHORITY CO USER -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="d3f638bf-1d29-403c-9805-fb5dabdbb859" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- AUTHORITY STANDARD USER -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="3b07ae92-8fe0-4d73-bc7d-a4d7ec0ca964" />
+            <column name="user_group_id" value="dbfc4a65-d38f-4c66-9702-206e10fc2606" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- COMPANY ADMIN USER -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="00a1755e-4958-4a9a-85b6-e005971c2d2e" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- COMPANY CO USER -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="cd0f5669-172e-4b26-934c-5a7e23e304b7" />
+            <column name="user_group_id" value="290d92ba-127d-41b1-bc65-cce2398931c5" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+        <!-- COMPANY STANDARD USER -->
+        <!-- VIEW_EMAIL_NOTIFICATIONS-->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="d828b295-4ee8-44ff-8b50-fbf2891924a9" />
+            <column name="user_group_id" value="82fe2c2e-ca9f-47f5-acaa-701c2854b500" />
+            <column name="operation" value="096cf2ba-174f-4260-acac-99fe26706516" />
+            <column name="dbversion" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

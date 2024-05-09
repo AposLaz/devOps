@@ -1,0 +1,50 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-005.xml">
+    <changeSet id="ecertDA_005" author="European Dynamics" labels="ignorable">
+        <insert tableName="AAA_OPERATION">
+            <column name="id" value="d88e56a9-75a3-4009-af55-a93d256b40c4" />
+            <column name="name" value="COMPLETE_TASK" />
+            <column name="description" value="Can complete a task" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- AUTHORITY MAIN USER -->
+        <!-- COMPLETE TASK -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="d23dfdd4-cc3f-4d9b-967a-4beb79c925f7" />
+            <column name="user_group_id" value="33037450-b70b-4102-bb92-20c65f822602" />
+            <column name="operation" value="d88e56a9-75a3-4009-af55-a93d256b40c4" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- AUTHORITY CO USER -->
+        <!-- COMPLETE TASK -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="85b84dda-507b-4ac8-84e6-d994b506afc8" />
+            <column name="user_group_id" value="c5346e73-d22c-4b9b-868f-3d45dfaa6b58" />
+            <column name="operation" value="d88e56a9-75a3-4009-af55-a93d256b40c4" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- COMPANY MAIN USER -->
+        <!-- COMPLETE TASK -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="49ee310c-75b2-4dc9-9797-a490b5f6bcee" />
+            <column name="user_group_id" value="585687bb-0a79-45ad-b3d8-936d6e62c5c8" />
+            <column name="operation" value="d88e56a9-75a3-4009-af55-a93d256b40c4" />
+            <column name="dbversion" value="0" />
+        </insert>
+
+        <!-- COMPANY CO USER -->
+        <!-- COMPLETE TASK -->
+        <insert tableName="aaa_user_group_has_operation">
+            <column name="id" value="9a3f4704-a50f-4635-9af7-5d74eacd691a" />
+            <column name="user_group_id" value="290d92ba-127d-41b1-bc65-cce2398931c5" />
+            <column name="operation" value="d88e56a9-75a3-4009-af55-a93d256b40c4" />
+            <column name="dbversion" value="0" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,71 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://ecertby-postgres.ecertby-prod.svc.cluster.local:5432/ecertby_db
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          ecertby:
+            assertingparty:
+              metadata-uri: "http://ecertby-keycloak.ecertby-prod.svc.cluster.local:8080/realms/ecertby/protocol/saml/descriptor"
+
+  mail:
+    host: 10.250.10.132
+    port: 25
+
+#  Real SMPT config, e.g. Delos
+#  mail:
+#    host: delos.eurodyn.com
+#    port: 25
+#    username: ecertby@delos.eurodyn.com
+#    password: ******
+#    protocol: smtp
+#    tls: true
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: false
+#      max_tries: 3
+#      debug: false
+#      polling: true
+#      email_sender: no-reply@eurodyn.com
+
+logging:
+  level:
+    root: error
+    com.eurodyn.qlack: info
+    lgl.bayern.de.ecertby: info
+    org:
+      hibernate:
+        SQL: info
+        orm:
+          jdbc:
+            bind: info
+  file:
+    name: logs/ecertby.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: logs/ecertby-%d{yyyy-MM-dd}-%i.log
+      max-file-size: 10MB
+
+server:
+  forward-headers-strategy: native
+
+ecert:
+  saml-success-redirect: "https://ecertby.ecertbyprod.eurodyn.com/home"
+  saml-logout-endpoint: "https://ecertby.ecertbyprod.eurodyn.com/api/logout/saml2/slo"
+  keycloak-url: "https://ecertby-keycloak.ecertbyprod.eurodyn.com"
+  keycloak-container-url: "http://ecertby-keycloak.ecertby-prod.svc.cluster.local:8080"
+  domain-url: "https://ecertby.ecertbyprod.eurodyn.com"
+  keycloak-admin-password: "Aa5&Vx2!"
+  debug-methods: false
+
+qlack:
+  util:
+    clamav:
+      host: "ecertby-clamav.ecertby-prod.svc.cluster.local"
+  fuse:
+    mailing:
+      sendQueuedInterval: 60000

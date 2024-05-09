@@ -2,18 +2,43 @@ pipeline {
     agent any
 
     environment {
-        APP_PATH = 'jenkins/Jenkins_Upgradev3'
+        APP_PATH = 'jenkins/my-jenkins/apps'
     }
 
     stages {
-        stage('Find correct path') {
+        stage('Tests'){
             steps {
-                dir("./${APP_PATH}/java-tomcat-sample") {
-                    sh "ls"  
+                dir("./${ROOT_PATH}/ecertby-server"){
+                    sh '''
+                        mvn test
+                    '''
                 }
             }
         }
+        stage('Build') {
+            steps {
+                dir("./${APP_PATH}/ecertby-server") {
+                    sh '''
+                        mvn pom.xml clean install
+                    '''  
+                }
+            }
+        }
+        stage('Publish'){
+            steps {
+                archiveArtifacts('**/*.war')
+            }
+        }
+    }
 
-        // Additional stages can be added here as needed.
+    post {
+        always {
+            script {
+                if (currentBuild.result == 'SUCCESS') {
+                    echo 'BUILD SUCCES'
+                }else {
+                    echo 'BUILD fail'
+                }
+        }
     }
 }

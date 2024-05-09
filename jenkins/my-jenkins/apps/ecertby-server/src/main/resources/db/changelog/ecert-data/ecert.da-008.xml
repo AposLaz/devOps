@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.da-006.xml">
+    <changeSet id="ecertDA_008" author="European Dynamics" labels="ignorable">
+        <delete tableName="aaa_user_has_operation">
+            <where>id='06d5bf32-7a80-46c8-b1c1-83d2e4451b6b'</where>
+        </delete>
+        <delete tableName="aaa_user_group_has_operation">
+            <where>id='86102d57-e470-438a-be33-afdedba27ac3'</where>
+        </delete>
+        <delete tableName="aaa_user_group_has_operation">
+            <where>id='38cda9f0-2d5e-4fb0-bba2-db3a11511ac7'</where>
+        </delete>
+        <delete tableName="AAA_OPERATION">
+            <where>id='9c89e48c-5506-4f1b-a930-b8b512e83fda'</where>
+        </delete>
+    </changeSet>
+</databaseChangeLog>

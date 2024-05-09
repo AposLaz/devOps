@@ -1,0 +1,8 @@
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-test.yaml
+  datasource:
+    name: qDS
+    url: jdbc:postgresql://10.250.32.77:5432/test_db
+    username: postgres
+    password: postgres

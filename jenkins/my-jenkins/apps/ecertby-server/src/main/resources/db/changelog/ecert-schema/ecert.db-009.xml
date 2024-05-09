@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="ecert.db-009.xml">
+    <changeSet id="ecertDB_009" author="European Dynamics" labels="ignorable">
+        <createTable tableName="SEARCH_CRITERIA">
+            <column name="ID" type="VARCHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CRITERIA" type="VARCHAR(4000)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="REFERENCE_ID" type="VARCHAR(36)"/>
+            <column name="GROYP_TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addColumn tableName="USER_AUTHORITY">
+            <column name="FK_SEARCH_CRITERIA" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USER_AUTHORITY_SEARCH_CRITERIA" referencedTableName="SEARCH_CRITERIA" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="USER_COMPANY">
+            <column name="FK_SEARCH_CRITERIA" type="VARCHAR(36)">
+                <constraints foreignKeyName="FK_USER_COMPANY_SEARCH_CRITERIA" referencedTableName="SEARCH_CRITERIA" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

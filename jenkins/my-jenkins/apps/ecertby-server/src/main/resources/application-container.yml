@@ -1,0 +1,70 @@
+spring:
+  datasource:
+    name: qDS
+    # For day to day development, uncomment the following 3 lines and comment out the "original" 3
+
+    url: jdbc:postgresql://ecertby-postgres:5432/ecertby_db
+    username: ecertby
+    password: passwort
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      maximum-pool-size: 10
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          ecertby:
+            entity-id: ecertbyDevClient
+            #acs:
+            #location: "http://localhost:7070/realms/ecertby/protocol/saml"
+            signing:
+              credentials:
+                - private-key-location: "classpath:/sso/pkcs8.key"
+                  certificate-location: "classpath:/sso/certificate.crt"
+            assertingparty:
+              metadata-uri: "http://ecertby-keycloak:8080/realms/ecertby/protocol/saml/descriptor"
+
+  mail:
+    host: 127.0.0.1
+    port: 1125
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+      max_tries: 3
+      debug: false
+      polling: true
+      email_sender: no-reply@eurodyn.com
+
+logging:
+  level:
+    root: error
+    com.eurodyn.qlack: info
+    lgl.bayern.de.ecertby: info
+
+ecert:
+  saml-success-redirect: "http://localhost:8080/home"
+  saml-logout-endpoint: "http://localhost:8081/api/logout/saml2/slo"
+  keycloak-url: "http://localhost:7070"
+  keycloak-container-url: "http://ecertby-keycloak:8080"
+  keycloak-ecertby-realm: "ecertby"
+  keycloak-admin-username: "admin"
+  keycloak-admin-password: "admin"
+  keycloak-master-realm: "master"
+  keycloak-client-id: "admin-cli"
+  keycloak-client-id-for-verification: "account"
+  domain-url: "http://localhost:8080"
+
+scheduler:
+  clear-object-locks-cron: "0 0 3 * * *"
+
+qlack:
+  fuse:
+    cm:
+      storageStrategy: "FS_STORAGE"
+  util:
+    clamav:
+      host: "ecertby-clamav"
