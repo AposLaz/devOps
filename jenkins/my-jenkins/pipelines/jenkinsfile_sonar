@@ -18,6 +18,15 @@ pipeline {
                 '''
             }
         }
+        stage('Unit Tests') {
+            steps {
+                dir("./${APP_PATH}") {
+                    sh '''
+                        mvn test
+                    '''
+                }
+            }
+        }
         stage('Sonar Qube Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {
@@ -30,20 +39,12 @@ pipeline {
                 }
             }
         }
-        stage('Tests') {
-            steps {
-                dir("./${APP_PATH}") {
-                    sh '''
-                        mvn test
-                    '''
-                }
-            }
-        }
+
         stage('Build') {
             steps {
                 dir("./${APP_PATH}") {
                     sh '''
-                        mvn clean install
+                        mvn clean package
                     '''
                 }
             }
