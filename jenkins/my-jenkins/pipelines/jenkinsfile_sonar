@@ -41,19 +41,12 @@ pipeline {
                 withSonarQubeEnv('sonar-server') {
                     sh '''
                         $SONAR_SCANNER/bin/sonar-scanner -Dsonar.projectName=testApp \
-                        -Dsonar.working.directory=/tmp \
                         -Dsonar.projectKey=testApp \
                         -Dsonar.java.binaries=.
                     '''
                 }
             }
         }
-        stage('Sonar Files') {
-            steps {
-                sh 'ls -la'
-            }
-        }
-
         stage('Build') {
             steps {
                 dir("./${APP_PATH}") {
