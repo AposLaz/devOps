@@ -6,7 +6,8 @@ pipeline {
     }
 
     environment {
-        APP_PATH = 'jenkins/my-jenkins/apps'
+        APP_PATH = 'jenkins/Jenkins_Upgradev3/java-tomcat-sample'
+        SONAR_SCANNER = tool 'Sonar_Scanner'
     }
 
     stages {
@@ -15,6 +16,17 @@ pipeline {
                 sh '''
                     mvn --version
                 '''
+            }
+        }
+        stage('Sonar Qube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar-server') {
+                    sh '''
+                        $SONAR_SCANNER/bin/sonar-scanner -Dsonar.projectName=testApp \
+                        -Dsonar.working.directory=/tmp \
+                        -Dsonar.projectKey=testApp
+                    '''
+                }
             }
         }
         stage('Tests') {
