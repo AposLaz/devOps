@@ -48,6 +48,11 @@ pipeline {
                 }
             }
         }
+        stage('Sonar Files') {
+            steps {
+                sh 'ls -la'
+            }
+        }
 
         stage('Build') {
             steps {
