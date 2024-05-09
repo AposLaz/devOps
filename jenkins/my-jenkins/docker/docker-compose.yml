@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  jenkins1:
+    container_name: jenkins_1
+    image: jenkins/jenkins:latest
+    restart: unless-stopped
+    ports:
+      - 8090:8080
+    volumes:
+      - ./jenkins_volume:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock 
+    user: root
+    privileged: true
