@@ -8,7 +8,7 @@ pipeline {
         stage('Find correct path'){
             steps{
                 dir("./${PATH}/java-tomcat-sample"){
-                    sh 'ls'
+                    sh "ls"
                 }            
             }
         }
