@@ -50,11 +50,10 @@ pipeline {
         }
         stage('Sonar Files') {
             steps {
-                sh '''
-                    echo "Current directory: $(pwd)"
-                    echo "Listing the contents of /tmp:"
-                    ls -la /tmp
-                '''
+                script {
+                    sh 'cp /tmp/report-task.txt ${WORKSPACE}'
+                    echo 'Report task file copied to workspace.'
+                }
             }
         }
 
