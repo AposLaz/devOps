@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = 'jenkins/Jenkins_Upgradev3'
+    }
     stages {
         stage('Find correct path'){
             steps{
-                echo "${currentBuild}"
+                echo "${BUILD_URL}"
                 sh '''
-                ls
+                    echo $PATH
                 '''
             }
         }
