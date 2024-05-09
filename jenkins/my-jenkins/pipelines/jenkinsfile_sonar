@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    tools {
+        jdk: 'jdk-17'
+        maven: 'maven3'
+    }
     environment {
         APP_PATH = 'jenkins/my-jenkins/apps'
     }
@@ -26,7 +29,7 @@ pipeline {
             steps {
                 dir("./${APP_PATH}/ecertby-server") {
                     sh '''
-                        mvn pom.xml clean install
+                        mvn clean install
                     '''  
                 }
             }
