@@ -6,6 +6,13 @@ pipeline {
     }
 
     stages {
+        stage('Setup'){
+            steps {
+                sh '''
+                    mvn --version
+                '''
+            }
+        }
         stage('Tests'){
             steps {
                 dir("./${APP_PATH}/ecertby-server"){
