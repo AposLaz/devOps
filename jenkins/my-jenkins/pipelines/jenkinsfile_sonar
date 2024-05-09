@@ -3,7 +3,10 @@ pipeline {
 
     stages {
         stage('Find correct path'){
-            sh 'ls'
+            echo "${currentBuild}"
+            sh '''
+             ls
+            '''
         }
 
         // stage('Login Sonar'){
