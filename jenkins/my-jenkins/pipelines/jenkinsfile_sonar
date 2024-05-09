@@ -1,9 +1,11 @@
 pipeline {
     agent any
-    tools {
-        jdk 'jdk-17'
-        maven 'Maven 3.3.9'
+    
+    tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
     }
+
     environment {
         APP_PATH = 'jenkins/my-jenkins/apps'
     }
