@@ -14,7 +14,6 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
-                    echo ${WORKSPACE}
                     mvn --version
                 '''
             }
@@ -42,7 +41,7 @@ pipeline {
                 withSonarQubeEnv('sonar-server') {
                     sh '''
                         $SONAR_SCANNER/bin/sonar-scanner -Dsonar.projectName=testApp \
-                        -Dsonar.working.directory=/${WORKSPACE} \
+                        -Dsonar.working.directory=${WORKSPACE} \
                         -Dsonar.projectKey=testApp \
                         -Dsonar.java.binaries=.
                     '''
