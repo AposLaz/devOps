@@ -41,22 +41,21 @@ pipeline {
                 withSonarQubeEnv('sonar-server') {
                     sh '''
                         $SONAR_SCANNER/bin/sonar-scanner -Dsonar.projectName=testApp \
-                        -Dsonar.working.directory=/tmp \
                         -Dsonar.projectKey=testApp \
                         -Dsonar.java.binaries=.
                     '''
                 }
             }
         }
-        stage('Sonar Files') {
-            steps {
-                script {
-                    sh 'chmod 644 /tmp/report-task.txt'
-                    sh 'cp /tmp/report-task.txt ${WORKSPACE}'
-                    echo 'Report task file copied to workspace.'
-                }
-            }
-        }
+        // stage('Sonar Files') {
+        //     steps {
+        //         script {
+        //             sh 'chmod 644 /tmp/report-task.txt'
+        //             sh 'cp /tmp/report-task.txt ${WORKSPACE}'
+        //             echo 'Report task file copied to workspace.'
+        //         }
+        //     }
+        // }
 
         stage('Build') {
             steps {
