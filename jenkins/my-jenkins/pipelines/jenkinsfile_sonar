@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        APP_PATH = 'jenkins/Jenkins_Upgradev3/java-tomcat-sample'
+        APP_PATH = 'jenkins/Jenkins_Upgradev3/maven-samples/single-module'
         SONAR_SCANNER = tool 'Sonar_Scanner'
     }
 
