@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        APP_PATH = 'jenkins/Jenkins_Upgradev3'  // Changed from PATH to avoid conflicts
+        APP_PATH = 'jenkins/Jenkins_Upgradev3'
     }
 
     stages {
         stage('Find correct path') {
             steps {
                 dir("./${APP_PATH}/java-tomcat-sample") {
-                    sh "ls"  // Lists contents of the directory for verification
+                    sh "ls"  
                 }
             }
         }
