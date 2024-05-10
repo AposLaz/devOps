@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_Home'
+        maven 'MavenSonar'
     }
 
     environment {
         APP_PATH = 'jenkins/Jenkins_Upgradev3/maven-samples/single-module'
-        SONAR_SCANNER = tool 'Sonar_Scanner'
+        SONAR_SCANNER = tool 'SonarScanner'
     }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 dir("./${APP_PATH}") {
                     sh '''
-                        mvn compile
+                        mvn clean compile
                     '''
                 }
             }
